@@ -1,43 +1,22 @@
 package main
  
 import (
-  "os"
-  "github.com/libgit2/git2go"
+  "os/exec"
+  "log"
+  "strings"
 )
 
-type gitRepo struct {
-  repo *git.Repository
-  walker *git.RevWalk
+func Git(cmdLine string) (string) {
+  args := []string{"--git-dir=/Users/tonymarklove/Web/shaded-website/.git","--work-tree=/Users/tonymarklove/Web/shaded-website"}
+
+  args = append(args, strings.Fields(cmdLine)...)
+
+  command := exec.Command("/usr/bin/git", args...)
+
+  output, err := command.Output()
+  if err != nil {
+    log.Print(command.Args)
+  }
+
+  return string(output)
 }
-
-var gr = gitRepo{}
-
-func gitStartup() {
-  repo, err := git.OpenRepository("/Users/tonymarklove/Web/shaded-website")
-  if err != nil {
-    os.Exit(1)
-  }
-
-  gr.repo = repo
-
-  walker, err := gr.repo.Walk()
-  if err != nil {
-    os.Exit(2)
-  }
-
-  gr.walker = walker
-
-  err = gr.walker.PushHead()
-  if err != nil {
-    os.Exit(3)
-  }
-}
-
-// {
-//   iterator := func(commit *git.Commit) bool {
-//     fmt.Printf("%s", commit.Message())
-//     return true
-//   }
-
-//   walker.Iterate(iterator)
-// }

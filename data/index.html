@@ -1,21 +1,46 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <title>Chat Example</title>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
 
-  <pre id="output">
-  </pre>
-  <form id="form">
-      <input type="submit" value="Send" />
-      <input type="text" id="msg" size="64"/>
-  </form>
+  <div class="container">
+    <div class="navbar navbar-default">
+      <div class="navbar-header">
+        <a href="#" class="navbar-brand">Git Viewer</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <pre data-target="changed-files">
+          
+        </pre>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <form data-target="commit-form">
+            <textarea data-target="commit-message" class="form-control"></textarea>
+
+            <input type="submit" value="Commit" class="btn btn-default" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

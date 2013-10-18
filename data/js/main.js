@@ -1,24 +1,18 @@
-$(function() {
-  var conn;
-  var msg = $("#msg");
-  var output = $("#output");
+jQuery(function($) {
+  var conn = new WebSocket("ws://localhost:8080/ws");
 
-  $("#form").submit(function() {
-    if (!conn) {
-      return false;
-    }
-    if (!msg.val()) {
-      return false;
-    }
-    conn.send(msg.val());
-    msg.val("");
-    return false
-  });
-
-  conn = new WebSocket("ws://{{$}}/ws");
   conn.onclose = function(evt) {
-  }
+    console.log("Connection closed");
+  };
+
   conn.onmessage = function(evt) {
-    output.html(evt.data);
-  }
+    $("[data-target=changed-files]").html(evt.data);
+  };
+
+
+  $("form").on("submit", function(e) {
+    e.preventDefault();
+
+    conn.send($("textarea").val());
+  });
 });
