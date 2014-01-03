@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-  <title>Chat Example</title>
+  <title>Git Viewer</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
@@ -23,11 +24,17 @@
   </div>
 
   <div class="container">
+    <div>
+      <pre data-target="file-viewer">
+      </pre>
+    </div>
+
     <div class="row">
       <div class="col-md-6">
-        <pre data-target="changed-files">
-          
-        </pre>
+        <div class="well">
+          <ul class="changed-files" data-target="changed-files">
+          </ul>
+        </div>
       </div>
 
       <div class="col-md-6">
@@ -38,6 +45,22 @@
             <input type="submit" value="Commit" class="btn btn-default" />
           </form>
         </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="git-console" data-target="git-console">
+        <form>
+          <pre>
+          </pre>
+
+          <div class="input-group">
+            <input class="form-control" />
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-default">Send</button>
+            </span>
+          </div>
+        </form>
       </div>
     </div>
   </div>

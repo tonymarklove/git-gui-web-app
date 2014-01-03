@@ -1,0 +1,11 @@
+#git-console pre {
+  margin-top: 100px;
+  max-height: 30em;
+  overflow: auto;
+}
+
+.changed-files li {
+  text-decoration: underline;
+  cursor: pointer;
+  color: blue;
+}
